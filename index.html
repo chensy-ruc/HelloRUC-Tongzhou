@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>中国人民大学通州校区导览</title>
+  <meta name="description" content="面向访客、新生与国际友人的中国人民大学通州校区导览网站。">
+  <link rel="icon" href="./人大徽标/校徽.png">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="返回首页">
+      <img src="./人大徽标/校徽.png" alt="中国人民大学校徽">
+      <span>
+        <strong>HelloRUC Tongzhou</strong>
+        <small>通州校区导览</small>
+      </span>
+    </a>
+    <nav class="top-nav" aria-label="主导航">
+      <a href="#campus">地图</a>
+      <a href="#visit">参访</a>
+      <a href="#museum">历史</a>
+      <a href="#services">餐饮酒店</a>
+      <a href="#volunteers">志愿者</a>
+    </nav>
+    <div class="language-bar" id="language-bar" aria-label="语言切换"></div>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="home">
+      <img class="hero-bg" src="./通州校区建筑/已有建筑实景/京东群学楼/京东群学楼.jpg" alt="通州校区建筑实景">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">Renmin University of China · Tongzhou Campus</p>
+        <h1>一张地图，打开人大通州校区。</h1>
+        <p class="hero-text">
+          为参访者、新生和国际友人准备的校园导览：看手绘地图，查建筑位置，了解校史展、VR体验、周边餐饮酒店，并联系志愿者。
+        </p>
+        <div class="hero-actions">
+          <a class="primary-action" href="#campus">进入校园地图</a>
+          <a class="secondary-action" href="#volunteers">联系志愿者</a>
+        </div>
+      </div>
+      <div class="hero-services" id="hero-services" aria-label="服务入口"></div>
+    </section>
+
+    <section class="stats-strip" id="stats-strip" aria-label="数据概览"></section>
+
+    <section class="campus-section" id="campus">
+      <div class="section-head">
+        <p class="eyebrow">Campus Map</p>
+        <h2>点击地图标记，查看对应建筑与实景。</h2>
+        <p>手绘地图保留原始信息，页面额外叠加可交互标记，并与下方建筑列表同步。</p>
+      </div>
+
+      <div class="campus-layout">
+        <aside class="campus-panel">
+          <div class="panel-header">
+            <span>当前地点</span>
+            <strong id="active-building-name">加载中</strong>
+          </div>
+          <p id="active-building-type"></p>
+          <p id="active-building-description"></p>
+          <div class="image-rail" id="active-building-gallery"></div>
+        </aside>
+
+        <div class="map-stage">
+          <div class="map-scroll">
+            <img id="campus-map-image" src="./通州校区建筑/通州校区手绘地图.jpg" alt="中国人民大学通州校区手绘地图">
+            <div class="map-markers" id="map-markers" aria-label="地图建筑标记"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="visit-section" id="visit">
+      <div class="section-head">
+        <p class="eyebrow">Visit & Tours</p>
+        <h2>把校园参访拆成几条顺路动线。</h2>
+        <p>路线会联动现有建筑数据，点击路线中的地点可以直接回到地图焦点。</p>
+      </div>
+      <div class="route-grid" id="route-grid"></div>
+    </section>
+
+    <section class="building-section" id="buildings">
+      <div class="section-head section-head-row">
+        <div>
+          <p class="eyebrow">Buildings</p>
+          <h2>校园地点索引。</h2>
+        </div>
+        <div class="toolbar">
+          <input id="building-search" type="search" placeholder="搜索建筑、食堂、服务中心">
+          <select id="building-filter" aria-label="建筑分类筛选"></select>
+        </div>
+      </div>
+      <div class="building-grid" id="building-grid"></div>
+    </section>
+
+    <section class="museum-section" id="museum">
+      <div class="section-head">
+        <p class="eyebrow">RUC Museum</p>
+        <h2>校史展与线上 VR 入口。</h2>
+        <p>博物馆资料读取本地多语种文本，当前主馆建设信息、校史展说明和 VR 二维码都集中展示。</p>
+      </div>
+      <div class="museum-grid" id="museum-grid"></div>
+    </section>
+
+    <section class="services-section" id="services">
+      <div class="section-head section-head-row">
+        <div>
+          <p class="eyebrow">Visitor Services</p>
+          <h2>周边餐饮与酒店。</h2>
+        </div>
+        <div class="segmented-control" id="place-tabs" aria-label="服务类型切换">
+          <button type="button" data-kind="restaurants" class="is-active">餐饮</button>
+          <button type="button" data-kind="hotels">酒店</button>
+        </div>
+      </div>
+      <div class="place-grid" id="place-grid"></div>
+    </section>
+
+    <section class="volunteer-section" id="volunteers">
+      <div class="section-head">
+        <p class="eyebrow">HelloRUC Volunteers</p>
+        <h2>需要帮助时，先找到人。</h2>
+        <p>志愿者卡片来自本地照片与简介，群聊二维码用于后续接入真实咨询入口。</p>
+      </div>
+      <div class="volunteer-layout">
+        <div class="volunteer-grid" id="volunteer-grid"></div>
+        <aside class="qr-panel">
+          <img src="./通州校区志愿者/HelloRUC志愿者群聊.jpg" alt="HelloRUC 志愿者群聊二维码">
+          <strong>HelloRUC 志愿者群聊</strong>
+          <span>扫码加入后可咨询路线、报到、食宿和校园服务。</span>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>中国人民大学通州校区导览</span>
+    <a href="#top">回到顶部</a>
+  </footer>
+
+  <script src="./site-data.js"></script>
+  <script src="./app.js"></script>
+</body>
+</html>
