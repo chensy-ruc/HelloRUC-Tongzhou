@@ -22,6 +22,7 @@
       <a href="#visit">参访</a>
       <a href="#museum">历史</a>
       <a href="#services">餐饮酒店</a>
+      <a href="#assistant">AI问答</a>
       <a href="#volunteers">志愿者</a>
     </nav>
     <div class="language-bar" id="language-bar" aria-label="语言切换"></div>
@@ -51,7 +52,7 @@
       <div class="section-head">
         <p class="eyebrow">Campus Map</p>
         <h2>点击地图标记，查看对应建筑与实景。</h2>
-        <p>手绘地图保留原始信息，页面额外叠加可交互标记，并与下方建筑列表同步。</p>
+        <p>手绘地图保留原始信息，页面仅叠加已有实景资料的建筑标记，并与下方建筑列表同步。</p>
       </div>
 
       <div class="campus-layout">
@@ -118,6 +119,26 @@
         </div>
       </div>
       <div class="place-grid" id="place-grid"></div>
+    </section>
+
+    <section class="assistant-section" id="assistant">
+      <div class="section-head section-head-row">
+        <div>
+          <p class="eyebrow">AI Assistant</p>
+          <h2>访客问答助手。</h2>
+          <p>围绕路线、报到、餐饮、酒店、博物馆和校园服务，提供本地知识库式快速回答。</p>
+        </div>
+      </div>
+      <div class="assistant-layout">
+        <div class="assistant-chat" aria-live="polite">
+          <div class="assistant-answer" id="assistant-answer"></div>
+          <form class="assistant-form" id="assistant-form">
+            <input id="assistant-input" type="search" placeholder="输入问题，例如：新生报到先去哪里？">
+            <button type="submit">提问</button>
+          </form>
+        </div>
+        <div class="assistant-prompts" id="assistant-prompts" aria-label="常见问题"></div>
+      </div>
     </section>
 
     <section class="volunteer-section" id="volunteers">

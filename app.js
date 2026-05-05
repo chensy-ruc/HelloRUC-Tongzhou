@@ -5,7 +5,8 @@ const state = {
   activeBuildingId: data.buildings?.[0]?.id || "",
   placeKind: "restaurants",
   buildingQuery: "",
-  buildingType: "all"
+  buildingType: "all",
+  assistantQuestion: ""
 };
 
 const languages = [
@@ -39,7 +40,9 @@ const ui = {
     restaurantStats: "餐饮选择",
     hotelStats: "周边酒店",
     volunteerStats: "志愿者",
-    museumStats: "博物馆板块"
+    museumStats: "博物馆板块",
+    askPlaceholder: "输入问题，例如：新生报到先去哪里？",
+    askButton: "提问"
   },
   en: {
     noInfo: "More information will be added",
@@ -61,7 +64,9 @@ const ui = {
     restaurantStats: "Dining picks",
     hotelStats: "Nearby hotels",
     volunteerStats: "Volunteers",
-    museumStats: "Museum sections"
+    museumStats: "Museum sections",
+    askPlaceholder: "Ask about check-in, routes, dining, hotels or services",
+    askButton: "Ask"
   }
 };
 
@@ -81,6 +86,10 @@ const elements = {
   museumGrid: document.querySelector("#museum-grid"),
   placeTabs: document.querySelector("#place-tabs"),
   placeGrid: document.querySelector("#place-grid"),
+  assistantAnswer: document.querySelector("#assistant-answer"),
+  assistantForm: document.querySelector("#assistant-form"),
+  assistantInput: document.querySelector("#assistant-input"),
+  assistantPrompts: document.querySelector("#assistant-prompts"),
   volunteerGrid: document.querySelector("#volunteer-grid")
 };
 
@@ -89,6 +98,7 @@ const serviceLinks = [
   { href: "#visit", title: "参访路线", caption: "首次到访、学习生活、文化参观" },
   { href: "#museum", title: "校史与VR", caption: "校史展、多语种介绍、线上体验" },
   { href: "#services", title: "餐饮酒店", caption: "周边餐厅、酒店、联系方式" },
+  { href: "#assistant", title: "AI问答", caption: "路线、报到、餐饮与校园服务" },
   { href: "#volunteers", title: "志愿者", caption: "志愿者介绍与群聊二维码" },
   { href: "#buildings", title: "地点索引", caption: "搜索筛选校园建筑与服务点" }
 ];
@@ -122,6 +132,14 @@ function imageOrFallback(images) {
   return images?.find(Boolean) || "";
 }
 
+function hasRealImages(building) {
+  return Array.isArray(building?.images) && building.images.some(Boolean);
+}
+
+function mapBuildings() {
+  return (data.buildings || []).filter((building) => Array.isArray(building.position) && hasRealImages(building));
+}
+
 function imageHtml(src, alt, className = "") {
   if (!src) {
     return `<div class="empty-state ${className}">${t("noImage")}</div>`;
@@ -135,6 +153,10 @@ function activeBuilding() {
 
 function findBuildingByName(name) {
   return data.buildings?.find((item) => item.name === name || item.name.includes(name) || name.includes(item.name));
+}
+
+function findMapBuildingByName(name) {
+  return mapBuildings().find((item) => item.name === name || item.name.includes(name) || name.includes(item.name));
 }
 
 function setActiveBuilding(id, shouldScroll = false) {
@@ -202,11 +224,11 @@ function renderActiveBuilding() {
 }
 
 function renderMapMarkers() {
-  elements.mapMarkers.innerHTML = (data.buildings || [])
-    .filter((building) => Array.isArray(building.position))
+  elements.mapMarkers.innerHTML = mapBuildings()
     .map((building, index) => {
       const [x, y] = building.position;
       const active = building.id === state.activeBuildingId;
+      const preview = building.icon || imageOrFallback(building.images);
       return `
         <button
           class="marker-button ${active ? "is-active" : ""}"
@@ -215,7 +237,11 @@ function renderMapMarkers() {
           data-building="${escapeHtml(building.id)}"
           style="left:${x}%;top:${y}%"
         >
-          ${index + 1}
+          <span class="marker-index">${index + 1}</span>
+          <span class="marker-preview">
+            ${preview ? `<img src="${escapeHtml(preview)}" alt="${escapeHtml(building.name)}">` : ""}
+            <span>${escapeHtml(building.name)}</span>
+          </span>
         </button>
       `;
     })
@@ -231,7 +257,7 @@ function renderRoutes() {
         <p>${escapeHtml(route.summary)}</p>
         <div class="route-stops">
           ${(route.stops || []).map((stop) => {
-            const building = findBuildingByName(stop);
+            const building = findMapBuildingByName(stop);
             return building
               ? `<button class="route-stop" type="button" data-building="${escapeHtml(building.id)}">${escapeHtml(stop)}</button>`
               : `<span class="route-stop">${escapeHtml(stop)}</span>`;
@@ -239,6 +265,24 @@ function renderRoutes() {
         </div>
       </article>
     `)
+    .join("");
+}
+
+function answerQuestion(question) {
+  const query = String(question || "").trim().toLowerCase();
+  const items = data.aiAssistant?.answers || [];
+  if (!query) return data.aiAssistant?.welcome || items[0]?.answer || t("noInfo");
+  const matched = items.find((item) => (item.keywords || []).some((keyword) => query.includes(String(keyword).toLowerCase())));
+  return matched?.answer || data.aiAssistant?.fallback || t("noInfo");
+}
+
+function renderAssistant() {
+  if (!elements.assistantAnswer) return;
+  elements.assistantInput.placeholder = t("askPlaceholder");
+  elements.assistantForm.querySelector("button").textContent = t("askButton");
+  elements.assistantAnswer.innerHTML = `<p>${escapeHtml(answerQuestion(state.assistantQuestion))}</p>`;
+  elements.assistantPrompts.innerHTML = (data.aiAssistant?.prompts || [])
+    .map((prompt) => `<button class="assistant-prompt" type="button" data-question="${escapeHtml(prompt)}">${escapeHtml(prompt)}</button>`)
     .join("");
 }
 
@@ -397,6 +441,20 @@ function bindEvents() {
     });
     renderPlaces();
   });
+
+  elements.assistantForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    state.assistantQuestion = elements.assistantInput.value;
+    renderAssistant();
+  });
+
+  elements.assistantPrompts?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-question]");
+    if (!button) return;
+    state.assistantQuestion = button.dataset.question;
+    elements.assistantInput.value = state.assistantQuestion;
+    renderAssistant();
+  });
 }
 
 function renderAll() {
@@ -410,6 +468,7 @@ function renderAll() {
   renderBuildings();
   renderMuseum();
   renderPlaces();
+  renderAssistant();
   renderVolunteers();
 }
 
