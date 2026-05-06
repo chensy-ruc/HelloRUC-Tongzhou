@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "start": "node server.js",
+    "serve": "python3 -m http.server 8000",
+    "refresh:data": "python3 scripts/refresh_site_data.py"
+  }
+}

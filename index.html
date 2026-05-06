@@ -22,7 +22,7 @@
       <a href="#visit">参访</a>
       <a href="#museum">历史</a>
       <a href="#services">餐饮酒店</a>
-      <a href="#assistant">AI问答</a>
+      <a href="#assistant">问答</a>
       <a href="#volunteers">志愿者</a>
     </nav>
     <div class="language-bar" id="language-bar" aria-label="语言切换"></div>
@@ -40,7 +40,7 @@
         </p>
         <div class="hero-actions">
           <a class="primary-action" href="#campus">进入校园地图</a>
-          <a class="secondary-action" href="#volunteers">联系志愿者</a>
+          <a class="secondary-action" href="#volunteers">寻求帮助</a>
         </div>
       </div>
       <div class="hero-services" id="hero-services" aria-label="服务入口"></div>
@@ -51,8 +51,8 @@
     <section class="campus-section" id="campus">
       <div class="section-head">
         <p class="eyebrow">Campus Map</p>
-        <h2>点击地图标记，查看对应建筑与实景。</h2>
-        <p>手绘地图保留原始信息，页面仅叠加已有实景资料的建筑标记，并与下方建筑列表同步。</p>
+        <h2>按地图标记查看建筑位置与实景。</h2>
+        <p>地图标记对应已有实景资料的建筑，可与下方地点索引和参访路线联动。</p>
       </div>
 
       <div class="campus-layout">
@@ -67,9 +67,16 @@
         </aside>
 
         <div class="map-stage">
-          <div class="map-scroll">
-            <img id="campus-map-image" src="./通州校区建筑/通州校区手绘地图.jpg" alt="中国人民大学通州校区手绘地图">
-            <div class="map-markers" id="map-markers" aria-label="地图建筑标记"></div>
+          <div class="map-controls" aria-label="地图缩放控制">
+            <button type="button" data-map-action="zoom-out" aria-label="缩小地图">-</button>
+            <button type="button" data-map-action="reset">复位</button>
+            <button type="button" data-map-action="zoom-in" aria-label="放大地图">+</button>
+          </div>
+          <div class="map-scroll" id="map-scroll">
+            <div class="map-canvas" id="map-canvas">
+              <img id="campus-map-image" src="./通州校区建筑/通州校区手绘地图.jpg" alt="中国人民大学通州校区手绘地图">
+              <div class="map-markers" id="map-markers" aria-label="地图建筑标记"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -78,7 +85,7 @@
     <section class="visit-section" id="visit">
       <div class="section-head">
         <p class="eyebrow">Visit & Tours</p>
-        <h2>把校园参访拆成几条顺路动线。</h2>
+        <h2>选择适合你的参访路线。</h2>
         <p>路线会联动现有建筑数据，点击路线中的地点可以直接回到地图焦点。</p>
       </div>
       <div class="route-grid" id="route-grid"></div>
@@ -101,8 +108,8 @@
     <section class="museum-section" id="museum">
       <div class="section-head">
         <p class="eyebrow">RUC Museum</p>
-        <h2>校史展与线上 VR 入口。</h2>
-        <p>博物馆资料读取本地多语种文本，当前主馆建设信息、校史展说明和 VR 二维码都集中展示。</p>
+        <h2>校史展与线上 VR 体验。</h2>
+        <p>了解通州校区博物馆、校史展信息，并通过二维码进入线上 VR 展览。</p>
       </div>
       <div class="museum-grid" id="museum-grid"></div>
     </section>
@@ -124,9 +131,9 @@
     <section class="assistant-section" id="assistant">
       <div class="section-head section-head-row">
         <div>
-          <p class="eyebrow">AI Assistant</p>
-          <h2>访客问答助手。</h2>
-          <p>围绕路线、报到、餐饮、酒店、博物馆和校园服务，提供本地知识库式快速回答。</p>
+          <p class="eyebrow">Smart Assistant</p>
+          <h2>智能问答助手。</h2>
+          <p>可咨询路线、报到、餐饮、酒店、博物馆和校园服务，回答会结合当前页面资料供你参考。</p>
         </div>
       </div>
       <div class="assistant-layout">
@@ -144,8 +151,8 @@
     <section class="volunteer-section" id="volunteers">
       <div class="section-head">
         <p class="eyebrow">HelloRUC Volunteers</p>
-        <h2>需要帮助时，先找到人。</h2>
-        <p>志愿者卡片来自本地照片与简介，群聊二维码用于后续接入真实咨询入口。</p>
+        <h2>联系 HelloRUC 志愿者。</h2>
+        <p>如需路线、报到、食宿或校园服务帮助，可查看志愿者信息并加入群聊咨询。</p>
       </div>
       <div class="volunteer-layout">
         <div class="volunteer-grid" id="volunteer-grid"></div>

@@ -406,14 +406,52 @@ section {
 }
 
 .map-stage {
+  display: grid;
+  gap: 10px;
   padding: 12px;
+}
+
+.map-controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.map-controls button {
+  min-width: 42px;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--ruc-red);
+  background: white;
+  cursor: pointer;
+  font-weight: 900;
+}
+
+.map-controls button:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
 }
 
 .map-scroll {
   position: relative;
-  overflow: visible;
+  overflow: auto;
   border-radius: var(--radius);
   background: #fff8dd;
+  cursor: grab;
+  touch-action: pan-x pan-y;
+  scrollbar-color: rgba(176, 31, 61, 0.42) rgba(255, 255, 255, 0.68);
+}
+
+.map-scroll.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.map-canvas {
+  position: relative;
+  min-width: 100%;
+  transition: width 0.2s ease;
 }
 
 #campus-map-image {
@@ -626,7 +664,54 @@ section {
 }
 
 .museum-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: minmax(280px, 0.85fr) minmax(0, 1.15fr);
+  align-items: stretch;
+}
+
+.museum-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.museum-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.museum-overview-card {
+  display: grid;
+  align-content: space-between;
+}
+
+.museum-history-card {
+  grid-row: span 2;
+  display: grid;
+  align-content: end;
+  min-height: 560px;
+  color: white;
+  background:
+    linear-gradient(180deg, rgba(27, 10, 14, 0.28), rgba(27, 10, 14, 0.86)),
+    var(--museum-bg) center / cover;
+}
+
+.museum-history-card .tag {
+  color: white;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.museum-history-card p {
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.museum-vr-card {
+  display: grid;
+  gap: 14px;
+}
+
+.museum-vr-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 150px;
+  gap: 12px;
 }
 
 .museum-gallery {
@@ -638,6 +723,47 @@ section {
 
 .museum-gallery img:first-child {
   grid-column: 1 / -1;
+}
+
+.museum-screenshots {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.museum-screenshots img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: var(--radius);
+}
+
+.museum-screenshots img:first-child {
+  grid-column: 1 / -1;
+}
+
+.museum-qr {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.82);
+  text-align: center;
+}
+
+.museum-qr img {
+  width: 100%;
+  aspect-ratio: 1;
+  object-fit: contain;
+  border-radius: var(--radius);
+  background: white;
+}
+
+.museum-qr strong {
+  color: var(--ruc-red);
+  font-size: 0.9rem;
 }
 
 .segmented-control {
@@ -846,12 +972,19 @@ section {
   }
 
   .route-grid,
-  .museum-grid,
   .place-grid,
   .building-grid,
   .volunteer-grid,
   .stats-strip {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .museum-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .museum-history-card {
+    grid-row: auto;
   }
 
   .qr-panel {
@@ -909,11 +1042,23 @@ section {
     width: 100%;
   }
 
-  .map-scroll {
-    overflow-x: auto;
+  .map-stage {
+    padding: 8px;
+  }
+
+  .map-canvas {
+    width: 150%;
   }
 
   .assistant-form {
     grid-template-columns: 1fr;
+  }
+
+  .museum-vr-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .museum-qr {
+    max-width: 220px;
   }
 }

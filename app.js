@@ -6,7 +6,15 @@ const state = {
   placeKind: "restaurants",
   buildingQuery: "",
   buildingType: "all",
-  assistantQuestion: ""
+  assistantQuestion: "",
+  assistantAnswer: "",
+  assistantLoading: false,
+  mapZoom: 1,
+  isMapDragging: false,
+  dragStartX: 0,
+  dragStartY: 0,
+  dragScrollLeft: 0,
+  dragScrollTop: 0
 };
 
 const languages = [
@@ -42,7 +50,8 @@ const ui = {
     volunteerStats: "志愿者",
     museumStats: "博物馆板块",
     askPlaceholder: "输入问题，例如：新生报到先去哪里？",
-    askButton: "提问"
+    askButton: "提问",
+    asking: "正在整理回答..."
   },
   en: {
     noInfo: "More information will be added",
@@ -66,7 +75,8 @@ const ui = {
     volunteerStats: "Volunteers",
     museumStats: "Museum sections",
     askPlaceholder: "Ask about check-in, routes, dining, hotels or services",
-    askButton: "Ask"
+    askButton: "Ask",
+    asking: "Preparing an answer..."
   }
 };
 
@@ -78,6 +88,9 @@ const elements = {
   activeBuildingType: document.querySelector("#active-building-type"),
   activeBuildingDescription: document.querySelector("#active-building-description"),
   activeBuildingGallery: document.querySelector("#active-building-gallery"),
+  mapScroll: document.querySelector("#map-scroll"),
+  mapCanvas: document.querySelector("#map-canvas"),
+  mapControls: document.querySelector(".map-controls"),
   mapMarkers: document.querySelector("#map-markers"),
   routeGrid: document.querySelector("#route-grid"),
   buildingGrid: document.querySelector("#building-grid"),
@@ -98,7 +111,7 @@ const serviceLinks = [
   { href: "#visit", title: "参访路线", caption: "首次到访、学习生活、文化参观" },
   { href: "#museum", title: "校史与VR", caption: "校史展、多语种介绍、线上体验" },
   { href: "#services", title: "餐饮酒店", caption: "周边餐厅、酒店、联系方式" },
-  { href: "#assistant", title: "AI问答", caption: "路线、报到、餐饮与校园服务" },
+  { href: "#assistant", title: "智能问答", caption: "路线、报到、餐饮与校园服务" },
   { href: "#volunteers", title: "志愿者", caption: "志愿者介绍与群聊二维码" },
   { href: "#buildings", title: "地点索引", caption: "搜索筛选校园建筑与服务点" }
 ];
@@ -136,8 +149,12 @@ function hasRealImages(building) {
   return Array.isArray(building?.images) && building.images.some(Boolean);
 }
 
+function realBuildings() {
+  return (data.buildings || []).filter(hasRealImages);
+}
+
 function mapBuildings() {
-  return (data.buildings || []).filter((building) => Array.isArray(building.position) && hasRealImages(building));
+  return realBuildings().filter((building) => Array.isArray(building.position));
 }
 
 function imageHtml(src, alt, className = "") {
@@ -248,6 +265,29 @@ function renderMapMarkers() {
     .join("");
 }
 
+function setMapZoom(nextZoom, preserveCenter = true) {
+  if (!elements.mapCanvas || !elements.mapScroll) return;
+  const previousWidth = elements.mapCanvas.offsetWidth || 1;
+  const previousHeight = elements.mapCanvas.offsetHeight || 1;
+  const centerX = (elements.mapScroll.scrollLeft + elements.mapScroll.clientWidth / 2) / previousWidth;
+  const centerY = (elements.mapScroll.scrollTop + elements.mapScroll.clientHeight / 2) / previousHeight;
+
+  state.mapZoom = Math.min(2.6, Math.max(1, Number(nextZoom.toFixed(2))));
+  elements.mapCanvas.style.width = `${state.mapZoom * 100}%`;
+
+  window.requestAnimationFrame(() => {
+    if (!preserveCenter) {
+      elements.mapScroll.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+      return;
+    }
+    elements.mapScroll.scrollLeft = elements.mapCanvas.offsetWidth * centerX - elements.mapScroll.clientWidth / 2;
+    elements.mapScroll.scrollTop = elements.mapCanvas.offsetHeight * centerY - elements.mapScroll.clientHeight / 2;
+  });
+
+  elements.mapControls?.querySelector('[data-map-action="zoom-out"]')?.toggleAttribute("disabled", state.mapZoom <= 1);
+  elements.mapControls?.querySelector('[data-map-action="zoom-in"]')?.toggleAttribute("disabled", state.mapZoom >= 2.6);
+}
+
 function renderRoutes() {
   elements.routeGrid.innerHTML = (data.routes || [])
     .map((route) => `
@@ -276,18 +316,81 @@ function answerQuestion(question) {
   return matched?.answer || data.aiAssistant?.fallback || t("noInfo");
 }
 
+function assistantContext() {
+  return {
+    language: state.language,
+    stats: data.stats,
+    activeBuilding: activeBuilding()?.name || "",
+    buildings: realBuildings().map((item) => ({
+      name: item.name,
+      type: item.type,
+      description: summarize(localText(item.description), 160)
+    })),
+    routes: data.routes || [],
+    museum: (data.museum || []).map((item) => ({
+      title: item.title,
+      info: summarize(localText(item.info), 220)
+    }))
+  };
+}
+
+async function requestOnlineAnswer(question) {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 9000);
+  try {
+    const response = await fetch(window.HELLO_RUC_ASSISTANT_ENDPOINT || "/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        question,
+        context: assistantContext()
+      }),
+      signal: controller.signal
+    });
+    if (!response.ok) throw new Error(`Assistant request failed: ${response.status}`);
+    const payload = await response.json();
+    return String(payload.answer || "").trim();
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
+async function askAssistant(question) {
+  state.assistantQuestion = String(question || "").trim();
+  state.assistantAnswer = "";
+  if (!state.assistantQuestion) {
+    renderAssistant();
+    return;
+  }
+  state.assistantLoading = true;
+  renderAssistant();
+  const localAnswer = answerQuestion(state.assistantQuestion);
+  try {
+    const onlineAnswer = await requestOnlineAnswer(state.assistantQuestion);
+    state.assistantAnswer = onlineAnswer || localAnswer;
+  } catch {
+    state.assistantAnswer = localAnswer;
+  } finally {
+    state.assistantLoading = false;
+    renderAssistant();
+  }
+}
+
 function renderAssistant() {
   if (!elements.assistantAnswer) return;
   elements.assistantInput.placeholder = t("askPlaceholder");
   elements.assistantForm.querySelector("button").textContent = t("askButton");
-  elements.assistantAnswer.innerHTML = `<p>${escapeHtml(answerQuestion(state.assistantQuestion))}</p>`;
+  const answer = state.assistantLoading
+    ? t("asking")
+    : state.assistantAnswer || answerQuestion(state.assistantQuestion);
+  elements.assistantAnswer.innerHTML = `<p>${escapeHtml(answer)}</p>`;
   elements.assistantPrompts.innerHTML = (data.aiAssistant?.prompts || [])
     .map((prompt) => `<button class="assistant-prompt" type="button" data-question="${escapeHtml(prompt)}">${escapeHtml(prompt)}</button>`)
     .join("");
 }
 
 function renderBuildingFilter() {
-  const types = Array.from(new Set((data.buildings || []).map((item) => item.type))).sort();
+  const types = Array.from(new Set(realBuildings().map((item) => item.type))).sort();
   elements.buildingFilter.innerHTML = [
     `<option value="all">${t("allTypes")}</option>`,
     ...types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(type)}</option>`)
@@ -303,7 +406,7 @@ function buildingMatches(building) {
 }
 
 function renderBuildings() {
-  const list = (data.buildings || []).filter(buildingMatches);
+  const list = realBuildings().filter(buildingMatches);
   elements.buildingGrid.innerHTML = list.length
     ? list.map((building) => {
       const src = imageOrFallback(building.images) || building.icon;
@@ -326,8 +429,43 @@ function renderMuseum() {
   elements.museumGrid.innerHTML = (data.museum || [])
     .map((item) => {
       const info = localText(item.info) || t("noInfo");
+      if (item.id === "线上VR体验") {
+        const qr = (item.images || []).find((src) => src.includes("二维码"));
+        const screenshots = (item.images || []).filter((src) => src !== qr);
+        return `
+          <article class="museum-card museum-vr-card">
+            <span class="tag">${escapeHtml(item.title)}</span>
+            <h3>${escapeHtml(item.title)}</h3>
+            <p>${escapeHtml(info)}</p>
+            <div class="museum-vr-layout">
+              <div class="museum-screenshots">
+                ${screenshots.map((src) => imageHtml(src, item.title)).join("") || `<div class="empty-state">${t("noImage")}</div>`}
+              </div>
+              <aside class="museum-qr">
+                ${imageHtml(qr, `${item.title}二维码`)}
+                <strong>扫码进入 VR 展览</strong>
+              </aside>
+            </div>
+          </article>
+        `;
+      }
+      if (item.id === "校史展") {
+        const [background, ...gallery] = item.images || [];
+        return `
+          <article class="museum-card museum-history-card" style="--museum-bg: url('${escapeHtml(background || "")}')">
+            <div>
+              <span class="tag">${escapeHtml(item.title)}</span>
+              <h3>${escapeHtml(item.title)}</h3>
+              <p>${escapeHtml(info)}</p>
+            </div>
+            <div class="museum-gallery">
+              ${(gallery.length ? gallery : item.images || []).map((src) => imageHtml(src, item.title)).join("") || `<div class="empty-state">${t("noImage")}</div>`}
+            </div>
+          </article>
+        `;
+      }
       return `
-        <article class="museum-card">
+        <article class="museum-card museum-overview-card">
           <span class="tag">${escapeHtml(item.title)}</span>
           <h3>${escapeHtml(item.title)}</h3>
           <p>${escapeHtml(info)}</p>
@@ -444,16 +582,48 @@ function bindEvents() {
 
   elements.assistantForm?.addEventListener("submit", (event) => {
     event.preventDefault();
-    state.assistantQuestion = elements.assistantInput.value;
-    renderAssistant();
+    askAssistant(elements.assistantInput.value);
   });
 
   elements.assistantPrompts?.addEventListener("click", (event) => {
     const button = event.target.closest("[data-question]");
     if (!button) return;
-    state.assistantQuestion = button.dataset.question;
-    elements.assistantInput.value = state.assistantQuestion;
-    renderAssistant();
+    elements.assistantInput.value = button.dataset.question;
+    askAssistant(button.dataset.question);
+  });
+
+  elements.mapControls?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-map-action]");
+    if (!button) return;
+    const action = button.dataset.mapAction;
+    if (action === "zoom-in") setMapZoom(state.mapZoom + 0.25);
+    if (action === "zoom-out") setMapZoom(state.mapZoom - 0.25);
+    if (action === "reset") setMapZoom(1, false);
+  });
+
+  elements.mapScroll?.addEventListener("pointerdown", (event) => {
+    if (event.target.closest("button, a, input, select")) return;
+    state.isMapDragging = true;
+    state.dragStartX = event.clientX;
+    state.dragStartY = event.clientY;
+    state.dragScrollLeft = elements.mapScroll.scrollLeft;
+    state.dragScrollTop = elements.mapScroll.scrollTop;
+    elements.mapScroll.classList.add("is-dragging");
+    elements.mapScroll.setPointerCapture(event.pointerId);
+  });
+
+  elements.mapScroll?.addEventListener("pointermove", (event) => {
+    if (!state.isMapDragging) return;
+    event.preventDefault();
+    elements.mapScroll.scrollLeft = state.dragScrollLeft - (event.clientX - state.dragStartX);
+    elements.mapScroll.scrollTop = state.dragScrollTop - (event.clientY - state.dragStartY);
+  });
+
+  ["pointerup", "pointercancel", "pointerleave"].forEach((eventName) => {
+    elements.mapScroll?.addEventListener(eventName, () => {
+      state.isMapDragging = false;
+      elements.mapScroll.classList.remove("is-dragging");
+    });
   });
 }
 
@@ -475,3 +645,4 @@ function renderAll() {
 renderHeroServices();
 renderAll();
 bindEvents();
+setMapZoom(1, false);
