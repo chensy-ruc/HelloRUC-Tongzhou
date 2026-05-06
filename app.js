@@ -334,10 +334,56 @@ function assistantContext() {
   };
 }
 
+function assistantMessages(question) {
+  return [
+    {
+      role: "system",
+      content: [
+        "你是 HelloRUC Tongzhou 的校园导览问答助手。",
+        "请面向参访者、新生和国际友人回答，语言自然、简洁、可靠。",
+        "只根据用户问题、页面上下文和可确认的信息回答；涉及实时政策、开放时间、预约、报到安排时提醒用户以学校通知、现场信息或志愿者确认为准。",
+        "不要暴露开发实现、API、后端、知识库等技术细节。"
+      ].join("\n")
+    },
+    {
+      role: "user",
+      content: `页面上下文：\n${JSON.stringify(assistantContext()).slice(0, 12000)}\n\n用户问题：${String(question || "").trim()}`
+    }
+  ];
+}
+
+async function requestDirectModelAnswer(question, signal) {
+  const config = window.HELLO_RUC_ASSISTANT || {};
+  const apiKey = String(config.apiKey || "").trim();
+  if (!apiKey || apiKey === "你的_DeepSeek_API_Key") return "";
+
+  const baseUrl = String(config.baseUrl || "https://api.deepseek.com").replace(/\/$/, "");
+  const model = String(config.model || "deepseek-v4-flash").trim();
+  const response = await fetch(`${baseUrl}/chat/completions`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      "Authorization": `Bearer ${apiKey}`
+    },
+    body: JSON.stringify({
+      model,
+      temperature: 0.2,
+      messages: assistantMessages(question)
+    }),
+    signal
+  });
+  if (!response.ok) throw new Error(`Model request failed: ${response.status}`);
+  const payload = await response.json();
+  return String(payload.choices?.[0]?.message?.content || "").trim();
+}
+
 async function requestOnlineAnswer(question) {
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), 9000);
   try {
+    const directAnswer = await requestDirectModelAnswer(question, controller.signal);
+    if (directAnswer) return directAnswer;
+
     const response = await fetch(window.HELLO_RUC_ASSISTANT_ENDPOINT || "/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },

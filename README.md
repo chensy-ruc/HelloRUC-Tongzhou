@@ -54,6 +54,7 @@
 - [index.html](/Users/chen/Desktop/人大通州/index.html)：页面结构
 - [styles.css](/Users/chen/Desktop/人大通州/styles.css)：页面样式、响应式布局、动画
 - [app.js](/Users/chen/Desktop/人大通州/app.js)：交互逻辑、搜索筛选、地图联动、语言切换、智能问答
+- [assistant-config.js](/Users/chen/Desktop/人大通州/assistant-config.js)：GitHub Pages 前端直连模型配置
 - [site-data.js](/Users/chen/Desktop/人大通州/site-data.js)：由本地素材整理出的页面数据
 - [server.js](/Users/chen/Desktop/人大通州/server.js)：本地 Node 静态服务与 `/api/chat` 问答接口
 - [api/chat.js](/Users/chen/Desktop/人大通州/api/chat.js)：Vercel API 问答入口
@@ -115,6 +116,28 @@ python3 scripts/refresh_site_data.py
 https://chensy-ruc.github.io/HelloRUCTongzhou/
 ```
 
+GitHub Pages 只托管静态 HTML、CSS 和 JavaScript，不能在运行时读取 `.env` 或执行 `api/chat.js`、`server.js`。如果接受 API Key 暴露在前端，可以直接编辑 `assistant-config.js`：
+
+```js
+window.HELLO_RUC_ASSISTANT = {
+  apiKey: "你的 DeepSeek API Key",
+  model: "deepseek-v4-flash",
+  baseUrl: "https://api.deepseek.com"
+};
+```
+
+推送到 GitHub 后，GitHub Pages 会加载这个配置并尝试从浏览器直连 DeepSeek。若浏览器请求被模型服务的 CORS 策略拦截，页面会自动退回到内置资料回答。
+
+如果需要避免前端直连，可以把带有 `api/chat.js` 的同一仓库部署到 Vercel，或另建一个 Cloudflare Worker / 服务器作为代理。在后端平台的环境变量中填写：
+
+```text
+OPENAI_API_KEY=你的 DeepSeek API Key
+OPENAI_MODEL=deepseek-v4-flash
+OPENAI_BASE_URL=https://api.deepseek.com
+```
+
+使用 Vercel 时，填写位置是 `Project -> Settings -> Environment Variables`。
+
 ## 已完成
 
 - 完成校园导览首页、服务入口、地图、路线、建筑、博物馆、餐饮酒店、志愿者板块
@@ -134,5 +157,4 @@ https://chensy-ruc.github.io/HelloRUCTongzhou/
 ## 后续改进方向
 
 - 继续补充真实报到政策、开放时间、预约方式等可更新资料源，并定期校验内容有效性
-- 为 GitHub Pages 场景补充外部问答服务地址配置；GitHub Pages 只能托管静态前端，不能运行同源 Node API
 - 如手绘地图后续更新，需要重新校准 `POSITION_OVERRIDES` 中的建筑坐标
