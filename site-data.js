@@ -14,33 +14,11 @@ window.SITE_DATA = {
   },
   "buildings": [
     {
-      "id": "b01",
-      "name": "中心食堂",
-      "type": "餐饮配套",
-      "position": [
-        84.9,
-        32.4
-      ],
-      "images": [
-        "通州校区建筑/已有建筑实景/中心食堂/中心食堂.jpg",
-        "通州校区建筑/已有建筑实景/中心食堂/中心食堂2.jpg",
-        "通州校区建筑/已有建筑实景/中心食堂/中心食堂3.jpg"
-      ],
-      "icon": "通州校区建筑/地图建筑小图/北区食堂.png",
-      "description": {
-        "cn": "计划采用“中央厨房+卫星食堂”的创新模式运营，提供个性化的营养建议。",
-        "en": "It plans to operate using an innovative “central kitchen + satellite canteen” model, providing personalized nutritional advice.",
-        "es": "Se planea operar utilizando un modelo innovador de “cocina central + comedor satélite”, ofreciendo asesoramiento nutricional personalizado.",
-        "fr": "Il est prévu de fonctionner selon un modèle innovant de « cuisine centrale + cantine satellite », en fournissant des conseils nutritionnels personnalisés.",
-        "de": "Es ist geplant, nach dem innovativen Modell „Zentralküche + Satellitenmensa“ zu betreiben und personalisierte Ernährungsberatung anzubieten.",
-        "ja": "「中央厨房＋衛星食堂」という革新的なモデルで運営し、個別化された栄養アドバイスを提供する予定です。",
-        "ru": "Планируется внедрение инновационной модели «центральная кухня + спутниковая столовая» с предоставлением персонализированных рекомендаций по питанию."
-      }
-    },
-    {
       "id": "b02",
       "name": "京东群学楼",
-      "type": "校园建筑",
+      "type": "教学科研",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         23.2,
         68.5
@@ -62,49 +40,11 @@ window.SITE_DATA = {
       }
     },
     {
-      "id": "b03",
-      "name": "健康中心",
-      "type": "校园服务",
-      "position": [
-        81.6,
-        22.8
-      ],
-      "images": [
-        "通州校区建筑/已有建筑实景/健康中心/健康中心.jpg",
-        "通州校区建筑/已有建筑实景/健康中心/健康中心2.jpg",
-        "通州校区建筑/已有建筑实景/健康中心/健康中心3.jpg"
-      ],
-      "icon": "",
-      "description": {
-        "cn": "建筑总面积约7,789平方米,保障师生基础医疗，并提供体检报告解读、疫苗接种答疑等服务。",
-        "en": "The total building area is approximately 7,789 square meters. It ensures basic medical care for faculty and students, and provides services such as interpreting medical examination reports and answering questions about vaccinations.",
-        "es": "El área total del edificio es de aproximadamente 7,789 metros cuadrados. Garantiza la atención médica básica para profesores y estudiantes, y ofrece servicios como la interpretación de informes de exámenes médicos y la resolución de dudas sobre vacunación.",
-        "fr": "La surface totale du bâtiment est d’environ 7 789 mètres carrés. Il assure les soins médicaux de base pour les enseignants et les étudiants, et fournit des services tels que l’interprétation des bilans de santé et la réponse aux questions sur la vaccination.",
-        "de": "Die Gesamtfläche des Gebäudes beträgt etwa 7.789 Quadratmeter. Es gewährleistet die grundlegende medizinische Versorgung von Lehrkräften und Studierenden und bietet Dienstleistungen wie die Auswertung von Untersuchungsberichten und die Beantwortung von Fragen zur Impfung an.",
-        "ja": "建築総面積は約7,789平方メートルで、教職員と学生の基礎医療を保障し、さらに健康診断報告書の解読やワクチン接種に関する質問への回答などのサービスを提供します。",
-        "ru": "Общая площадь здания составляет около 7 789 квадратных метров. Оно обеспечивает базовую медицинскую помощь преподавателям и студентам, а также предоставляет такие услуги, как расшифровка отчётов медицинских осмотров и консультации по вопросам вакцинации."
-      }
-    },
-    {
-      "id": "b04",
-      "name": "先锋剧场",
-      "type": "艺术文化",
-      "position": [
-        68.1,
-        50.2
-      ],
-      "images": [
-        "通州校区建筑/已有建筑实景/先锋剧场/先锋剧场.jpg",
-        "通州校区建筑/已有建筑实景/先锋剧场/先锋剧场2.png",
-        "通州校区建筑/已有建筑实景/先锋剧场/先锋剧场3.jpg"
-      ],
-      "icon": "通州校区建筑/地图建筑小图/先锋剧场.png",
-      "description": {}
-    },
-    {
       "id": "b05",
       "name": "公学一楼",
       "type": "教学科研",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         84.5,
         86.0
@@ -123,6 +63,8 @@ window.SITE_DATA = {
       "id": "b06",
       "name": "公学二楼",
       "type": "教学科研",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         62.2,
         32.6
@@ -138,6 +80,8 @@ window.SITE_DATA = {
       "id": "b07",
       "name": "北一公寓",
       "type": "住宿生活",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         44.6,
         44.6
@@ -154,6 +98,8 @@ window.SITE_DATA = {
       "id": "b08",
       "name": "北二公寓及生活服务区",
       "type": "住宿生活",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         54.8,
         25.4
@@ -179,6 +125,8 @@ window.SITE_DATA = {
       "id": "b09",
       "name": "北区学部楼（公学三楼）",
       "type": "教学科研",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         63.8,
         23.5
@@ -195,6 +143,8 @@ window.SITE_DATA = {
       "id": "b10",
       "name": "北区食堂",
       "type": "餐饮配套",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         51.0,
         32.0
@@ -208,9 +158,37 @@ window.SITE_DATA = {
       "description": {}
     },
     {
+      "id": "b09",
+      "name": "医务中心",
+      "type": "校园服务",
+      "status": "open",
+      "mapEnabled": true,
+      "position": [
+        65.2,
+        52.6
+      ],
+      "images": [
+        "通州校区建筑/已有建筑实景/医务中心/医务中心.jpg",
+        "通州校区建筑/已有建筑实景/医务中心/医务中心2.jpg",
+        "通州校区建筑/已有建筑实景/医务中心/医务中心3.jpg"
+      ],
+      "icon": "",
+      "description": {
+        "cn": "建筑总面积约7,789平方米,保障师生基础医疗，并提供体检报告解读、疫苗接种答疑等服务。",
+        "en": "The total building area is approximately 7,789 square meters. It ensures basic medical care for faculty and students, and provides services such as interpreting medical examination reports and answering questions about vaccinations.",
+        "es": "El área total del edificio es de aproximadamente 7,789 metros cuadrados. Garantiza la atención médica básica para profesores y estudiantes, y ofrece servicios como la interpretación de informes de exámenes médicos y la resolución de dudas sobre vacunación.",
+        "fr": "La surface totale du bâtiment est d’environ 7 789 mètres carrés. Il assure les soins médicaux de base pour les enseignants et les étudiants, et fournit des services tels que l’interprétation des bilans de santé et la réponse aux questions sur la vaccination.",
+        "de": "Die Gesamtfläche des Gebäudes beträgt etwa 7.789 Quadratmeter. Es gewährleistet die grundlegende medizinische Versorgung von Lehrkräften und Studierenden und bietet Dienstleistungen wie die Auswertung von Untersuchungsberichten und die Beantwortung von Fragen zur Impfung an.",
+        "ja": "建築総面積は約7,789平方メートルで、教職員と学生の基礎医療を保障し、さらに健康診断報告書の解読やワクチン接種に関する質問への回答などのサービスを提供します。",
+        "ru": "Общая площадь здания составляет около 7 789 квадратных метров. Оно обеспечивает базовую медицинскую помощь преподавателям и студентам, а также предоставляет такие услуги, как расшифровка отчётов медицинских осмотров и консультации по вопросам вакцинации."
+      }
+    },
+    {
       "id": "b11",
       "name": "叶澄海楼",
-      "type": "校园建筑",
+      "type": "教学科研",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         30.0,
         54.4
@@ -235,9 +213,11 @@ window.SITE_DATA = {
       "id": "b12",
       "name": "学生事务中心",
       "type": "校园服务",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
-        69.0,
-        47.0
+        76.0,
+        57.8
       ],
       "images": [
         "通州校区建筑/已有建筑实景/学生事务中心/学生事务中心.jpg",
@@ -255,28 +235,14 @@ window.SITE_DATA = {
       }
     },
     {
-      "id": "b13",
-      "name": "未来传播中心",
-      "type": "校园建筑",
-      "position": [
-        38.1,
-        53.6
-      ],
-      "images": [
-        "通州校区建筑/已有建筑实景/未来传播中心/未来传播中心.jpg",
-        "通州校区建筑/已有建筑实景/未来传播中心/未来传播中心2.jpg",
-        "通州校区建筑/已有建筑实景/未来传播中心/未来传播中心3.jpg"
-      ],
-      "icon": "通州校区建筑/地图建筑小图/未来传播中心.png",
-      "description": {}
-    },
-    {
       "id": "b14",
       "name": "校园运行中心",
       "type": "校园服务",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
-        76.5,
-        69.8
+        85.4,
+        75.8
       ],
       "images": [
         "通州校区建筑/已有建筑实景/校园运行中心/校园运行中心.jpg",
@@ -297,6 +263,8 @@ window.SITE_DATA = {
       "id": "b15",
       "name": "管理学部楼（公学四楼）",
       "type": "教学科研",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         74.8,
         23.7
@@ -313,6 +281,8 @@ window.SITE_DATA = {
       "id": "b16",
       "name": "艺术楼",
       "type": "艺术文化",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         34.8,
         66.6
@@ -337,6 +307,8 @@ window.SITE_DATA = {
       "id": "b17",
       "name": "西南学部楼",
       "type": "教学科研",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         34.6,
         72.8
@@ -361,6 +333,8 @@ window.SITE_DATA = {
       "id": "b18",
       "name": "西运动场",
       "type": "运动健康",
+      "status": "open",
+      "mapEnabled": true,
       "position": [
         32.2,
         43.3
@@ -380,6 +354,59 @@ window.SITE_DATA = {
         "ja": "スポーツセンターの総建築面積は約41,900平方メートルです。近隣の東南地区スタジアムプロジェクトでは、陸上競技場、サッカー場、バスケットボールコート及び補助エリアが計画されており、その敷地面積は30,700平方メートルに達します。",
         "ru": "Общая площадь спортивного центра составляет около 41 900 квадратных метров. Близлежащий проект стадиона Юго-Восточного района включает легкоатлетическое поле, футбольное поле, баскетбольные площадки и вспомогательные зоны, площадь территории — 30 700 квадратных метров."
       }
+    },
+    {
+      "id": "b01",
+      "name": "中心食堂",
+      "type": "餐饮配套",
+      "status": "future",
+      "mapEnabled": false,
+      "position": null,
+      "images": [
+        "通州校区建筑/未有建筑设计图/中心食堂/中心食堂.jpg",
+        "通州校区建筑/未有建筑设计图/中心食堂/中心食堂2.jpg",
+        "通州校区建筑/未有建筑设计图/中心食堂/中心食堂3.jpg"
+      ],
+      "icon": "通州校区建筑/地图建筑小图/北区食堂.png",
+      "description": {
+        "cn": "计划采用“中央厨房+卫星食堂”的创新模式运营，提供个性化的营养建议。",
+        "en": "It plans to operate using an innovative “central kitchen + satellite canteen” model, providing personalized nutritional advice.",
+        "es": "Se planea operar utilizando un modelo innovador de “cocina central + comedor satélite”, ofreciendo asesoramiento nutricional personalizado.",
+        "fr": "Il est prévu de fonctionner selon un modèle innovant de « cuisine centrale + cantine satellite », en fournissant des conseils nutritionnels personnalisés.",
+        "de": "Es ist geplant, nach dem innovativen Modell „Zentralküche + Satellitenmensa“ zu betreiben und personalisierte Ernährungsberatung anzubieten.",
+        "ja": "「中央厨房＋衛星食堂」という革新的なモデルで運営し、個別化された栄養アドバイスを提供する予定です。",
+        "ru": "Планируется внедрение инновационной модели «центральная кухня + спутниковая столовая» с предоставлением персонализированных рекомендаций по питанию."
+      }
+    },
+    {
+      "id": "b04",
+      "name": "先锋剧场",
+      "type": "艺术文化",
+      "status": "future",
+      "mapEnabled": false,
+      "position": null,
+      "images": [
+        "通州校区建筑/未有建筑设计图/先锋剧场/先锋剧场.jpg",
+        "通州校区建筑/未有建筑设计图/先锋剧场/先锋剧场2.png",
+        "通州校区建筑/未有建筑设计图/先锋剧场/先锋剧场3.jpg"
+      ],
+      "icon": "通州校区建筑/地图建筑小图/先锋剧场.png",
+      "description": {}
+    },
+    {
+      "id": "b13",
+      "name": "未来传播中心",
+      "type": "教学科研",
+      "status": "future",
+      "mapEnabled": false,
+      "position": null,
+      "images": [
+        "通州校区建筑/未有建筑设计图/未来传播中心/未来传播中心.jpg",
+        "通州校区建筑/未有建筑设计图/未来传播中心/未来传播中心2.jpg",
+        "通州校区建筑/未有建筑设计图/未来传播中心/未来传播中心3.jpg"
+      ],
+      "icon": "通州校区建筑/地图建筑小图/未来传播中心.png",
+      "description": {}
     }
   ],
   "museum": [
@@ -886,6 +913,8 @@ window.SITE_DATA = {
   ],
   "stats": {
     "buildingCount": 18,
+    "mapBuildingCount": 15,
+    "futureBuildingCount": 3,
     "restaurantCount": 14,
     "hotelCount": 8,
     "volunteerCount": 8,

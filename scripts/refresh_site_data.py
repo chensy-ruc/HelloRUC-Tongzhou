@@ -9,6 +9,7 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA_FILE = ROOT / "site-data.js"
 BUILDING_DIR = ROOT / "通州校区建筑"
 REAL_BUILDING_DIR = BUILDING_DIR / "已有建筑实景"
+FUTURE_BUILDING_DIR = BUILDING_DIR / "未有建筑设计图"
 ICON_DIR = BUILDING_DIR / "地图建筑小图"
 MUSEUM_DIR = ROOT / "通州校区博物馆"
 PLACES_DIR = ROOT / "通州校区附近餐饮及酒店"
@@ -33,12 +34,16 @@ BUILDING_TYPES = {
     "北二公寓及生活服务区": "住宿生活",
     "西运动场": "运动健康",
     "健康中心": "校园服务",
+    "医务中心": "校园服务",
     "学生事务中心": "校园服务",
     "校园运行中心": "校园服务",
     "先锋剧场": "艺术文化",
     "艺术楼": "艺术文化",
     "公学一楼": "教学科研",
     "公学二楼": "教学科研",
+    "京东群学楼": "教学科研",
+    "叶澄海楼": "教学科研",
+    "未来传播中心": "教学科研",
     "北区学部楼（公学三楼）": "教学科研",
     "管理学部楼（公学四楼）": "教学科研",
     "西南学部楼": "教学科研",
@@ -51,18 +56,15 @@ POSITION_OVERRIDES = {
     "北二公寓及生活服务区": [54.8, 25.4],
     "北区食堂": [51.0, 32.0],
     "北区学部楼（公学三楼）": [63.8, 23.5],
-    "中心食堂": [84.9, 32.4],
     "京东群学楼": [23.2, 68.5],
-    "健康中心": [81.6, 22.8],
+    "医务中心": [65.2, 52.6],
     "公学一楼": [84.5, 86.0],
     "公学二楼": [62.2, 32.6],
-    "先锋剧场": [68.1, 50.2],
-    "学生事务中心": [69.0, 47.0],
-    "校园运行中心": [76.5, 69.8],
+    "学生事务中心": [76.0, 57.8],
+    "校园运行中心": [85.4, 75.8],
     "管理学部楼（公学四楼）": [74.8, 23.7],
     "艺术楼": [34.8, 66.6],
     "西南学部楼": [34.6, 72.8],
-    "未来传播中心": [38.1, 53.6],
     "叶澄海楼": [30.0, 54.4],
     "西运动场": [32.2, 43.3],
 }
@@ -123,24 +125,34 @@ def first_existing_icon(name):
     return ""
 
 
+def building_record(folder, prior, index, status):
+    name = folder.name
+    is_open = status == "open"
+    return {
+        "id": prior.get("id") or f"{'b' if is_open else 'f'}{index:02d}",
+        "name": name,
+        "type": BUILDING_TYPES.get(name, prior.get("type", "校园建筑")),
+        "status": status,
+        "mapEnabled": is_open and name in POSITION_OVERRIDES,
+        "position": POSITION_OVERRIDES.get(name) if is_open else None,
+        "images": image_files(folder),
+        "icon": first_existing_icon(name) or prior.get("icon", ""),
+        "description": read_multilang(folder / "简介", "*.txt") or prior.get("description", {}),
+    }
+
+
 def scan_buildings(previous):
     previous_by_name = {item.get("name"): item for item in previous.get("buildings", [])}
     buildings = []
     for index, folder in enumerate(sorted(REAL_BUILDING_DIR.iterdir(), key=lambda p: p.name), start=1):
         if not folder.is_dir():
             continue
-        name = folder.name
-        prior = previous_by_name.get(name, {})
-        description = read_multilang(folder / "简介", "*.txt") or prior.get("description", {})
-        buildings.append({
-            "id": prior.get("id") or f"b{index:02d}",
-            "name": name,
-            "type": BUILDING_TYPES.get(name, prior.get("type", "校园建筑")),
-            "position": POSITION_OVERRIDES.get(name, prior.get("position")),
-            "images": image_files(folder),
-            "icon": first_existing_icon(name) or prior.get("icon", ""),
-            "description": description,
-        })
+        buildings.append(building_record(folder, previous_by_name.get(folder.name, {}), index, "open"))
+    if FUTURE_BUILDING_DIR.exists():
+        for index, folder in enumerate(sorted(FUTURE_BUILDING_DIR.iterdir(), key=lambda p: p.name), start=1):
+            if not folder.is_dir():
+                continue
+            buildings.append(building_record(folder, previous_by_name.get(folder.name, {}), index, "future"))
     return buildings
 
 
@@ -216,6 +228,8 @@ def main():
     }
     next_data["stats"] = {
         "buildingCount": len(next_data["buildings"]),
+        "mapBuildingCount": len([item for item in next_data["buildings"] if item.get("mapEnabled")]),
+        "futureBuildingCount": len([item for item in next_data["buildings"] if item.get("status") == "future"]),
         "restaurantCount": len(next_data["restaurants"]),
         "hotelCount": len(next_data["hotels"]),
         "volunteerCount": len(next_data["volunteers"]),
@@ -230,7 +244,9 @@ def main():
     )
 
     print("site-data generated")
-    print(f"- buildings with real images: {next_data['stats']['buildingCount']}")
+    print(f"- campus places: {next_data['stats']['buildingCount']}")
+    print(f"- map-indexed buildings: {next_data['stats']['mapBuildingCount']}")
+    print(f"- future buildings: {next_data['stats']['futureBuildingCount']}")
     print(f"- restaurants: {next_data['stats']['restaurantCount']}")
     print(f"- hotels: {next_data['stats']['hotelCount']}")
     print(f"- volunteers: {next_data['stats']['volunteerCount']}")

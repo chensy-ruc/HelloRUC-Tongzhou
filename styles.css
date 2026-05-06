@@ -611,6 +611,13 @@ section {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.building-group-title {
+  grid-column: 1 / -1;
+  margin: 14px 0 -2px;
+  font-size: 1rem;
+  color: var(--ruc-red-dark);
+}
+
 .building-card {
   display: grid;
   grid-template-rows: auto 1fr;
@@ -618,6 +625,14 @@ section {
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: white;
+  cursor: pointer;
+}
+
+.building-card-static {
+  cursor: default;
+}
+
+.guide-card {
   cursor: pointer;
 }
 
@@ -681,6 +696,11 @@ section {
 .museum-overview-card {
   display: grid;
   align-content: space-between;
+  min-height: 360px;
+  background:
+    linear-gradient(180deg, rgba(255, 253, 248, 0.9), rgba(255, 253, 248, 0.74)),
+    var(--overview-logo) right 22px bottom 22px / 118px auto no-repeat,
+    var(--overview-bg) center / cover no-repeat;
 }
 
 .museum-history-card {
