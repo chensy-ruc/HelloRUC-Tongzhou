@@ -110,10 +110,10 @@ python3 scripts/refresh_site_data.py
 3. `Build and deployment` 选择 `GitHub Actions`。
 4. 推送到 `main` 分支后，`.github/workflows/pages.yml` 会自动发布静态网站。
 
-如果仓库名为 `HelloRUCTongzhou`，部署后的地址通常是：
+如果仓库名为 `HelloRUC-Tongzhou`，部署后的地址通常是：
 
 ```text
-https://chensy-ruc.github.io/HelloRUCTongzhou/
+https://chensy-ruc.github.io/HelloRUC-Tongzhou/
 ```
 
 GitHub Pages 只托管静态 HTML、CSS 和 JavaScript，不能在运行时读取 `.env` 或执行 `api/chat.js`、`server.js`。如果接受 API Key 暴露在前端，可以直接编辑 `assistant-config.js`：

@@ -381,8 +381,12 @@ async function requestOnlineAnswer(question) {
   const controller = new AbortController();
   const timeout = window.setTimeout(() => controller.abort(), 9000);
   try {
-    const directAnswer = await requestDirectModelAnswer(question, controller.signal);
-    if (directAnswer) return directAnswer;
+    try {
+      const directAnswer = await requestDirectModelAnswer(question, controller.signal);
+      if (directAnswer) return directAnswer;
+    } catch (error) {
+      console.warn("Direct model request unavailable", error);
+    }
 
     const response = await fetch(window.HELLO_RUC_ASSISTANT_ENDPOINT || "/api/chat", {
       method: "POST",
@@ -396,6 +400,9 @@ async function requestOnlineAnswer(question) {
     if (!response.ok) throw new Error(`Assistant request failed: ${response.status}`);
     const payload = await response.json();
     return String(payload.answer || "").trim();
+  } catch (error) {
+    console.warn("Online assistant unavailable", error);
+    throw error;
   } finally {
     window.clearTimeout(timeout);
   }
