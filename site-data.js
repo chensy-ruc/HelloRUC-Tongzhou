@@ -46,8 +46,8 @@ window.SITE_DATA = {
       "status": "open",
       "mapEnabled": true,
       "position": [
-        84.5,
-        86.0
+        44.6,
+        54.7
       ],
       "images": [
         "通州校区建筑/已有建筑实景/公学一楼/公学一楼.jpg",
@@ -164,8 +164,8 @@ window.SITE_DATA = {
       "status": "open",
       "mapEnabled": true,
       "position": [
-        65.2,
-        52.6
+        61.7,
+        42.2
       ],
       "images": [
         "通州校区建筑/已有建筑实景/医务中心/医务中心.jpg",
@@ -216,8 +216,8 @@ window.SITE_DATA = {
       "status": "open",
       "mapEnabled": true,
       "position": [
-        76.0,
-        57.8
+        63.6,
+        42.2
       ],
       "images": [
         "通州校区建筑/已有建筑实景/学生事务中心/学生事务中心.jpg",
@@ -284,8 +284,8 @@ window.SITE_DATA = {
       "status": "open",
       "mapEnabled": true,
       "position": [
-        34.8,
-        66.6
+        32.2,
+        54.8
       ],
       "images": [
         "通州校区建筑/已有建筑实景/艺术楼/艺术楼.jpg",
@@ -473,8 +473,18 @@ window.SITE_DATA = {
     {
       "id": "baker&spice(北京首开通州万象汇店）",
       "name": "baker&spice(北京首开通州万象汇店）",
+      "nameTranslations": {
+        "cn": "baker&spice(北京首开通州万象汇店）",
+        "en": "baker&spice (Beijing Shoukai Tongzhou MixC)",
+        "es": "baker&spice (MixC Tongzhou de Beijing Shoukai)",
+        "fr": "baker&spice (MixC de Tongzhou, Beijing Shoukai)",
+        "de": "baker&spice (Beijing Shoukai Tongzhou MixC)",
+        "ja": "baker&spice（北京首開通州万象匯店）",
+        "ru": "baker&spice (Beijing Shoukai Tongzhou MixC)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/baker&spice(北京首开通州万象汇店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/baker&spice(北京首开通州万象汇店）/效果图2.jpg"
@@ -483,8 +493,18 @@ window.SITE_DATA = {
     {
       "id": "PHOTHEONE福万越南餐厅（通州万象汇店）",
       "name": "PHOTHEONE福万越南餐厅（通州万象汇店）",
+      "nameTranslations": {
+        "cn": "PHOTHEONE福万越南餐厅（通州万象汇店）",
+        "en": "PHOTHEONE Pho Wan Vietnamese Restaurant (Tongzhou MixC)",
+        "es": "PHOTHEONE Pho Wan, restaurante vietnamita (Tongzhou MixC)",
+        "fr": "PHOTHEONE Pho Wan, restaurant vietnamien (Tongzhou MixC)",
+        "de": "PHOTHEONE Pho Wan Vietnamesisches Restaurant (Tongzhou MixC)",
+        "ja": "PHOTHEONE福万ベトナム料理（通州万象匯店）",
+        "ru": "PHOTHEONE Pho Wan, вьетнамский ресторан (Tongzhou MixC)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/PHOTHEONE福万越南餐厅（通州万象汇店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/PHOTHEONE福万越南餐厅（通州万象汇店）/效果图2.jpg",
@@ -494,8 +514,18 @@ window.SITE_DATA = {
     {
       "id": "东兴班·新火锅（漕运码头店）",
       "name": "东兴班·新火锅（漕运码头店）",
+      "nameTranslations": {
+        "cn": "东兴班·新火锅（漕运码头店）",
+        "en": "Dongxingban New Hotpot (Caoyun Wharf)",
+        "es": "Dongxingban New Hotpot (Muelle Caoyun)",
+        "fr": "Dongxingban New Hotpot (quai Caoyun)",
+        "de": "Dongxingban New Hotpot (Caoyun Wharf)",
+        "ja": "東興班・新火鍋（漕運碼頭店）",
+        "ru": "Dongxingban New Hotpot (Caoyun Wharf)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/东兴班·新火锅（漕运码头店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/东兴班·新火锅（漕运码头店）/效果图2.jpg"
@@ -504,8 +534,18 @@ window.SITE_DATA = {
     {
       "id": "东方饺子王（通州畅和东路店）",
       "name": "东方饺子王（通州畅和东路店）",
+      "nameTranslations": {
+        "cn": "东方饺子王（通州畅和东路店）",
+        "en": "Oriental Dumpling King (Tongzhou Changhe East Road)",
+        "es": "Oriental Dumpling King (Changhe East Road, Tongzhou)",
+        "fr": "Oriental Dumpling King (route Changhe Est, Tongzhou)",
+        "de": "Oriental Dumpling King (Tongzhou Changhe East Road)",
+        "ja": "東方餃子王（通州暢和東路店）",
+        "ru": "Oriental Dumpling King (Tongzhou Changhe East Road)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/东方饺子王（通州畅和东路店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/东方饺子王（通州畅和东路店）/效果图2.jpg",
@@ -515,8 +555,18 @@ window.SITE_DATA = {
     {
       "id": "云荷里·傣家菜（通州万象汇店）",
       "name": "云荷里·傣家菜（通州万象汇店）",
+      "nameTranslations": {
+        "cn": "云荷里·傣家菜（通州万象汇店）",
+        "en": "Yunheli Dai Cuisine (Tongzhou MixC)",
+        "es": "Yunheli, cocina Dai (Tongzhou MixC)",
+        "fr": "Yunheli, cuisine Dai (Tongzhou MixC)",
+        "de": "Yunheli Dai-Kueche (Tongzhou MixC)",
+        "ja": "雲荷里・タイ族料理（通州万象匯店）",
+        "ru": "Yunheli, дайская кухня (Tongzhou MixC)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/云荷里·傣家菜（通州万象汇店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/云荷里·傣家菜（通州万象汇店）/效果图2.jpg"
@@ -525,8 +575,18 @@ window.SITE_DATA = {
     {
       "id": "俄士厨房（通州万象汇店）",
       "name": "俄士厨房（通州万象汇店）",
+      "nameTranslations": {
+        "cn": "俄士厨房（通州万象汇店）",
+        "en": "Russian Kitchen (Tongzhou MixC)",
+        "es": "Russian Kitchen (Tongzhou MixC)",
+        "fr": "Russian Kitchen (Tongzhou MixC)",
+        "de": "Russische Kueche (Tongzhou MixC)",
+        "ja": "ロシアンキッチン（通州万象匯店）",
+        "ru": "Русская кухня (Tongzhou MixC)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/俄士厨房（通州万象汇店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/俄士厨房（通州万象汇店）/效果图2.jpg"
@@ -535,8 +595,18 @@ window.SITE_DATA = {
     {
       "id": "吉野家（云帆路店）",
       "name": "吉野家（云帆路店）",
+      "nameTranslations": {
+        "cn": "吉野家（云帆路店）",
+        "en": "Yoshinoya (Yunfan Road)",
+        "es": "Yoshinoya (Yunfan Road)",
+        "fr": "Yoshinoya (route Yunfan)",
+        "de": "Yoshinoya (Yunfan Road)",
+        "ja": "吉野家（雲帆路店）",
+        "ru": "Yoshinoya (Yunfan Road)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/吉野家（云帆路店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/吉野家（云帆路店）/效果图2.jpg",
@@ -546,8 +616,18 @@ window.SITE_DATA = {
     {
       "id": "天和晟烤鸭店（通州朗清园店）",
       "name": "天和晟烤鸭店（通州朗清园店）",
+      "nameTranslations": {
+        "cn": "天和晟烤鸭店（通州朗清园店）",
+        "en": "Tianhesheng Roast Duck (Tongzhou Langqingyuan)",
+        "es": "Tianhesheng Pato Asado (Tongzhou Langqingyuan)",
+        "fr": "Tianhesheng canard laque (Tongzhou Langqingyuan)",
+        "de": "Tianhesheng Roast Duck (Tongzhou Langqingyuan)",
+        "ja": "天和晟北京ダック（通州朗清園店）",
+        "ru": "Tianhesheng, утка по-пекински (Tongzhou Langqingyuan)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/天和晟烤鸭店（通州朗清园店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/天和晟烤鸭店（通州朗清园店）/效果图2.jpg"
@@ -556,8 +636,18 @@ window.SITE_DATA = {
     {
       "id": "廿四湘汉寿甲鱼宴（漕运码头店）",
       "name": "廿四湘汉寿甲鱼宴（漕运码头店）",
+      "nameTranslations": {
+        "cn": "廿四湘汉寿甲鱼宴（漕运码头店）",
+        "en": "24 Xiang Hanshou Soft-Shell Turtle Banquet (Caoyun Wharf)",
+        "es": "24 Xiang Hanshou, banquete de tortuga de caparazon blando (Muelle Caoyun)",
+        "fr": "24 Xiang Hanshou, specialites de tortue a carapace molle (quai Caoyun)",
+        "de": "24 Xiang Hanshou Weichschildkroeten-Bankett (Caoyun Wharf)",
+        "ja": "廿四湘漢寿スッポン料理（漕運碼頭店）",
+        "ru": "24 Xiang Hanshou, блюда из мягкопанцирной черепахи (Caoyun Wharf)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/廿四湘汉寿甲鱼宴（漕运码头店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/廿四湘汉寿甲鱼宴（漕运码头店）/效果图2.jpg"
@@ -566,8 +656,18 @@ window.SITE_DATA = {
     {
       "id": "木桐莊西餐厅（北投店）",
       "name": "木桐莊西餐厅（北投店）",
+      "nameTranslations": {
+        "cn": "木桐莊西餐厅（北投店）",
+        "en": "Mutongzhuang Western Restaurant (Beitou)",
+        "es": "Mutongzhuang, restaurante occidental (Beitou)",
+        "fr": "Mutongzhuang, restaurant occidental (Beitou)",
+        "de": "Mutongzhuang Western Restaurant (Beitou)",
+        "ja": "木桐莊西洋料理（北投店）",
+        "ru": "Mutongzhuang, западный ресторан (Beitou)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/木桐莊西餐厅（北投店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/木桐莊西餐厅（北投店）/效果图2.jpg"
@@ -576,8 +676,18 @@ window.SITE_DATA = {
     {
       "id": "海底捞火锅（通州万象汇店）",
       "name": "海底捞火锅（通州万象汇店）",
+      "nameTranslations": {
+        "cn": "海底捞火锅（通州万象汇店）",
+        "en": "Haidilao Hot Pot (Tongzhou MixC)",
+        "es": "Haidilao Hot Pot (Tongzhou MixC)",
+        "fr": "Haidilao Hot Pot (Tongzhou MixC)",
+        "de": "Haidilao Hot Pot (Tongzhou MixC)",
+        "ja": "海底撈火鍋（通州万象匯店）",
+        "ru": "Haidilao Hot Pot (Tongzhou MixC)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/海底捞火锅（通州万象汇店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/海底捞火锅（通州万象汇店）/效果图2.jpg"
@@ -586,8 +696,18 @@ window.SITE_DATA = {
     {
       "id": "绿茶餐厅（北京首开万象汇店）",
       "name": "绿茶餐厅（北京首开万象汇店）",
+      "nameTranslations": {
+        "cn": "绿茶餐厅（北京首开万象汇店）",
+        "en": "Green Tea Restaurant (Beijing Shoukai MixC)",
+        "es": "Green Tea Restaurant (Beijing Shoukai MixC)",
+        "fr": "Green Tea Restaurant (Beijing Shoukai MixC)",
+        "de": "Green Tea Restaurant (Beijing Shoukai MixC)",
+        "ja": "緑茶餐庁（北京首開万象匯店）",
+        "ru": "Green Tea Restaurant (Beijing Shoukai MixC)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/绿茶餐厅（北京首开万象汇店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/绿茶餐厅（北京首开万象汇店）/效果图2.jpg",
@@ -597,8 +717,18 @@ window.SITE_DATA = {
     {
       "id": "鲜牛记潮汕牛肉火锅（通州万象汇店）",
       "name": "鲜牛记潮汕牛肉火锅（通州万象汇店）",
+      "nameTranslations": {
+        "cn": "鲜牛记潮汕牛肉火锅（通州万象汇店）",
+        "en": "Xianniuji Chaoshan Beef Hot Pot (Tongzhou MixC)",
+        "es": "Xianniuji Hot Pot de ternera Chaoshan (Tongzhou MixC)",
+        "fr": "Xianniuji hot pot de boeuf Chaoshan (Tongzhou MixC)",
+        "de": "Xianniuji Chaoshan Beef Hot Pot (Tongzhou MixC)",
+        "ja": "鮮牛記潮汕牛肉火鍋（通州万象匯店）",
+        "ru": "Xianniuji Chaoshan Beef Hot Pot (Tongzhou MixC)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/鲜牛记潮汕牛肉火锅（通州万象汇店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/鲜牛记潮汕牛肉火锅（通州万象汇店）/效果图2.jpg"
@@ -607,8 +737,18 @@ window.SITE_DATA = {
     {
       "id": "麦当劳（首开通州万象汇店）",
       "name": "麦当劳（首开通州万象汇店）",
+      "nameTranslations": {
+        "cn": "麦当劳（首开通州万象汇店）",
+        "en": "McDonald's (Shoukai Tongzhou MixC)",
+        "es": "McDonald's (Shoukai Tongzhou MixC)",
+        "fr": "McDonald's (Shoukai Tongzhou MixC)",
+        "de": "McDonald's (Shoukai Tongzhou MixC)",
+        "ja": "マクドナルド（首開通州万象匯店）",
+        "ru": "McDonald's (Shoukai Tongzhou MixC)"
+      },
       "kind": "餐饮",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/餐饮/麦当劳（首开通州万象汇店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/餐饮/麦当劳（首开通州万象汇店）/效果图2.jpg"
@@ -619,8 +759,18 @@ window.SITE_DATA = {
     {
       "id": "全季酒店（北京通州宋庄安贞医院店）",
       "name": "全季酒店（北京通州宋庄安贞医院店）",
+      "nameTranslations": {
+        "cn": "全季酒店（北京通州宋庄安贞医院店）",
+        "en": "JI Hotel (Beijing Tongzhou Songzhuang Anzhen Hospital)",
+        "es": "JI Hotel (Hospital Anzhen de Songzhuang, Tongzhou, Beijing)",
+        "fr": "JI Hotel (hopital Anzhen de Songzhuang, Tongzhou, Beijing)",
+        "de": "JI Hotel (Beijing Tongzhou Songzhuang Anzhen Hospital)",
+        "ja": "全季ホテル（北京通州宋荘安貞医院店）",
+        "ru": "JI Hotel (Beijing Tongzhou Songzhuang Anzhen Hospital)"
+      },
       "kind": "酒店",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/酒店/全季酒店（北京通州宋庄安贞医院店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/酒店/全季酒店（北京通州宋庄安贞医院店）/效果图2.jpg",
@@ -630,8 +780,18 @@ window.SITE_DATA = {
     {
       "id": "北投绿心网球酒店（北京环球度假区绿心公园店）",
       "name": "北投绿心网球酒店（北京环球度假区绿心公园店）",
+      "nameTranslations": {
+        "cn": "北投绿心网球酒店（北京环球度假区绿心公园店）",
+        "en": "Beitou Green Heart Tennis Hotel (Beijing Universal Resort Green Heart Park)",
+        "es": "Beitou Green Heart Tennis Hotel (Parque Green Heart, Beijing Universal Resort)",
+        "fr": "Beitou Green Heart Tennis Hotel (parc Green Heart, Beijing Universal Resort)",
+        "de": "Beitou Green Heart Tennis Hotel (Beijing Universal Resort Green Heart Park)",
+        "ja": "北投グリーンハート・テニスホテル（北京ユニバーサルリゾート緑心公園店）",
+        "ru": "Beitou Green Heart Tennis Hotel (Beijing Universal Resort Green Heart Park)"
+      },
       "kind": "酒店",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/酒店/北投绿心网球酒店（北京环球度假区绿心公园店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/酒店/北投绿心网球酒店（北京环球度假区绿心公园店）/效果图2.jpg",
@@ -641,8 +801,18 @@ window.SITE_DATA = {
     {
       "id": "北投运动家酒店（城市绿心森林公园店）",
       "name": "北投运动家酒店（城市绿心森林公园店）",
+      "nameTranslations": {
+        "cn": "北投运动家酒店（城市绿心森林公园店）",
+        "en": "Beitou Sports Hotel (City Green Heart Forest Park)",
+        "es": "Beitou Sports Hotel (Parque Forestal City Green Heart)",
+        "fr": "Beitou Sports Hotel (parc forestier City Green Heart)",
+        "de": "Beitou Sports Hotel (City Green Heart Forest Park)",
+        "ja": "北投スポーツホテル（都市緑心森林公園店）",
+        "ru": "Beitou Sports Hotel (City Green Heart Forest Park)"
+      },
       "kind": "酒店",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/酒店/北投运动家酒店（城市绿心森林公园店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/酒店/北投运动家酒店（城市绿心森林公园店）/效果图2.jpg",
@@ -652,6 +822,15 @@ window.SITE_DATA = {
     {
       "id": "如家精选酒店（北京通州宋庄安贞医院店）",
       "name": "如家精选酒店（北京通州宋庄安贞医院店）",
+      "nameTranslations": {
+        "cn": "如家精选酒店（北京通州宋庄安贞医院店）",
+        "en": "Home Inn Plus (Beijing Tongzhou Songzhuang Anzhen Hospital)",
+        "es": "Home Inn Plus (Hospital Anzhen de Songzhuang, Tongzhou, Beijing)",
+        "fr": "Home Inn Plus (hopital Anzhen de Songzhuang, Tongzhou, Beijing)",
+        "de": "Home Inn Plus (Beijing Tongzhou Songzhuang Anzhen Hospital)",
+        "ja": "ホームイン・プラス（北京通州宋荘安貞医院店）",
+        "ru": "Home Inn Plus (Beijing Tongzhou Songzhuang Anzhen Hospital)"
+      },
       "kind": "酒店",
       "fields": {
         "地址": "通州区徐宋路小堡村南三号院三号楼1楼",
@@ -659,6 +838,41 @@ window.SITE_DATA = {
         "电话": "+86-10-89556366-9",
         "酒店等级": "舒适型酒店",
         "链接": "https://m.ctrip.com/webapp/hotels/detail?hotelid=96812475&atime=20260528&days=1&rankid=&shareId=OTY4MTI0NzV8aG90ZWxfaW5sYW5kX2RldGFpbHwxMjh8MjAyNjA1MDJUMTIwOTQ1&uid=264E294983EDABE59F699A89DF559F22&intographicshow=1&sharersid=681&sharerpvid=24733&sharercid=12001157810315458272&sharerdate=20260502"
+      },
+      "fieldTranslations": {
+        "地址": {
+          "cn": "通州区徐宋路小堡村南三号院三号楼1楼",
+          "en": "1F, Building 3, South No. 3 Courtyard, Xiaobao Village, Xusong Road, Tongzhou District",
+          "es": "1F, Edificio 3, Patio Sur No. 3, aldea Xiaobao, Xusong Road, distrito de Tongzhou",
+          "fr": "1er etage, batiment 3, cour sud no 3, village de Xiaobao, route Xusong, district de Tongzhou",
+          "de": "1. Etage, Gebaeude 3, Suedhof Nr. 3, Xiaobao Village, Xusong Road, Bezirk Tongzhou",
+          "ja": "通州区徐宋路小堡村南三号院三号楼1階",
+          "ru": "1 этаж, здание 3, южный двор No. 3, деревня Xiaobao, Xusong Road, район Тунчжоу"
+        },
+        "备注": {
+          "cn": "距中国人民大学（通州校区）直线4.5公里，免费停车，可使用银联、Mastercard、visa、微信、支付宝支付",
+          "en": "About 4.5 km in a straight line from RUC Tongzhou Campus; free parking; accepts UnionPay, Mastercard, Visa, WeChat Pay and Alipay.",
+          "es": "A unos 4,5 km en linea recta del campus Tongzhou de RUC; aparcamiento gratuito; acepta UnionPay, Mastercard, Visa, WeChat Pay y Alipay.",
+          "fr": "A environ 4,5 km a vol d'oiseau du campus de Tongzhou de RUC; parking gratuit; accepte UnionPay, Mastercard, Visa, WeChat Pay et Alipay.",
+          "de": "Etwa 4,5 km Luftlinie vom RUC-Campus Tongzhou entfernt; kostenloses Parken; akzeptiert UnionPay, Mastercard, Visa, WeChat Pay und Alipay.",
+          "ja": "中国人民大学（通州キャンパス）から直線距離約4.5km。無料駐車場あり。銀聯、Mastercard、Visa、WeChat Pay、Alipay利用可。",
+          "ru": "Около 4,5 км по прямой от кампуса RUC Tongzhou; бесплатная парковка; принимаются UnionPay, Mastercard, Visa, WeChat Pay и Alipay."
+        },
+        "电话": {
+          "cn": "+86-10-89556366-9"
+        },
+        "酒店等级": {
+          "cn": "舒适型酒店",
+          "en": "Comfort hotel",
+          "es": "Hotel de confort",
+          "fr": "Hotel confort",
+          "de": "Komfort-Hotel",
+          "ja": "コンフォートホテル",
+          "ru": "Комфортный отель"
+        },
+        "链接": {
+          "cn": "https://m.ctrip.com/webapp/hotels/detail?hotelid=96812475&atime=20260528&days=1&rankid=&shareId=OTY4MTI0NzV8aG90ZWxfaW5sYW5kX2RldGFpbHwxMjh8MjAyNjA1MDJUMTIwOTQ1&uid=264E294983EDABE59F699A89DF559F22&intographicshow=1&sharersid=681&sharerpvid=24733&sharercid=12001157810315458272&sharerdate=20260502"
+        }
       },
       "images": [
         "通州校区附近餐饮及酒店/酒店/如家精选酒店（北京通州宋庄安贞医院店）/效果图1.jpg",
@@ -669,8 +883,18 @@ window.SITE_DATA = {
     {
       "id": "柏曼酒店（北京通州运河商务区店）",
       "name": "柏曼酒店（北京通州运河商务区店）",
+      "nameTranslations": {
+        "cn": "柏曼酒店（北京通州运河商务区店）",
+        "en": "Borrman Hotel (Beijing Tongzhou Canal Business District)",
+        "es": "Borrman Hotel (Distrito comercial del Canal, Tongzhou, Beijing)",
+        "fr": "Borrman Hotel (quartier d'affaires du canal, Tongzhou, Beijing)",
+        "de": "Borrman Hotel (Beijing Tongzhou Canal Business District)",
+        "ja": "ボーマンホテル（北京通州運河ビジネス区店）",
+        "ru": "Borrman Hotel (Beijing Tongzhou Canal Business District)"
+      },
       "kind": "酒店",
       "fields": {},
+      "fieldTranslations": {},
       "images": [
         "通州校区附近餐饮及酒店/酒店/柏曼酒店（北京通州运河商务区店）/效果图1.jpg",
         "通州校区附近餐饮及酒店/酒店/柏曼酒店（北京通州运河商务区店）/效果图2.jpg",
@@ -680,6 +904,15 @@ window.SITE_DATA = {
     {
       "id": "桔子酒店（北京通州安贞医院店）",
       "name": "桔子酒店（北京通州安贞医院店）",
+      "nameTranslations": {
+        "cn": "桔子酒店（北京通州安贞医院店）",
+        "en": "Orange Hotel (Beijing Tongzhou Anzhen Hospital)",
+        "es": "Orange Hotel (Hospital Anzhen, Tongzhou, Beijing)",
+        "fr": "Orange Hotel (hopital Anzhen, Tongzhou, Beijing)",
+        "de": "Orange Hotel (Beijing Tongzhou Anzhen Hospital)",
+        "ja": "オレンジホテル（北京通州安貞医院店）",
+        "ru": "Orange Hotel (Beijing Tongzhou Anzhen Hospital)"
+      },
       "kind": "酒店",
       "fields": {
         "地址": "通州区宋庄镇168号",
@@ -687,6 +920,41 @@ window.SITE_DATA = {
         "电话": "+86-10-89586815",
         "酒店等级": "舒适型酒店",
         "链接": "https://m.ctrip.com/webapp/hotels/detail?hotelid=67049254&atime=20260528&days=1&rankid=&shareId=NjcwNDkyNTR8aG90ZWxfaW5sYW5kX2RldGFpbHwxMjh8MjAyNjA1MDJUMTIwNDQw&uid=264E294983EDABE59F699A89DF559F22&intographicshow=1&sharersid=681&sharerpvid=24711&sharercid=12001157810315458272&sharerdate=20260502"
+      },
+      "fieldTranslations": {
+        "地址": {
+          "cn": "通州区宋庄镇168号",
+          "en": "No. 168, Songzhuang Town, Tongzhou District",
+          "es": "No. 168, pueblo de Songzhuang, distrito de Tongzhou",
+          "fr": "No 168, bourg de Songzhuang, district de Tongzhou",
+          "de": "Nr. 168, Songzhuang Town, Bezirk Tongzhou",
+          "ja": "通州区宋荘鎮168号",
+          "ru": "No. 168, поселок Songzhuang, район Тунчжоу"
+        },
+        "备注": {
+          "cn": "距中国人民大学（通州校区）直线4.4公里，免费停车，可使用微信、支付宝支付",
+          "en": "About 4.4 km in a straight line from RUC Tongzhou Campus; free parking; accepts WeChat Pay and Alipay.",
+          "es": "A unos 4,4 km en linea recta del campus Tongzhou de RUC; aparcamiento gratuito; acepta WeChat Pay y Alipay.",
+          "fr": "A environ 4,4 km a vol d'oiseau du campus de Tongzhou de RUC; parking gratuit; accepte WeChat Pay et Alipay.",
+          "de": "Etwa 4,4 km Luftlinie vom RUC-Campus Tongzhou entfernt; kostenloses Parken; akzeptiert WeChat Pay und Alipay.",
+          "ja": "中国人民大学（通州キャンパス）から直線距離約4.4km。無料駐車場あり。WeChat Pay、Alipay利用可。",
+          "ru": "Около 4,4 км по прямой от кампуса RUC Tongzhou; бесплатная парковка; принимаются WeChat Pay и Alipay."
+        },
+        "电话": {
+          "cn": "+86-10-89586815"
+        },
+        "酒店等级": {
+          "cn": "舒适型酒店",
+          "en": "Comfort hotel",
+          "es": "Hotel de confort",
+          "fr": "Hotel confort",
+          "de": "Komfort-Hotel",
+          "ja": "コンフォートホテル",
+          "ru": "Комфортный отель"
+        },
+        "链接": {
+          "cn": "https://m.ctrip.com/webapp/hotels/detail?hotelid=67049254&atime=20260528&days=1&rankid=&shareId=NjcwNDkyNTR8aG90ZWxfaW5sYW5kX2RldGFpbHwxMjh8MjAyNjA1MDJUMTIwNDQw&uid=264E294983EDABE59F699A89DF559F22&intographicshow=1&sharersid=681&sharerpvid=24711&sharercid=12001157810315458272&sharerdate=20260502"
+        }
       },
       "images": [
         "通州校区附近餐饮及酒店/酒店/桔子酒店（北京通州安贞医院店）/效果图1.jpg",
@@ -697,6 +965,15 @@ window.SITE_DATA = {
     {
       "id": "桔子酒店（北京通州环球北运河店）",
       "name": "桔子酒店（北京通州环球北运河店）",
+      "nameTranslations": {
+        "cn": "桔子酒店（北京通州环球北运河店）",
+        "en": "Orange Hotel (Beijing Tongzhou Universal North Canal)",
+        "es": "Orange Hotel (Canal Norte Universal, Tongzhou, Beijing)",
+        "fr": "Orange Hotel (canal nord Universal, Tongzhou, Beijing)",
+        "de": "Orange Hotel (Beijing Tongzhou Universal North Canal)",
+        "ja": "オレンジホテル（北京通州ユニバーサル北運河店）",
+        "ru": "Orange Hotel (Beijing Tongzhou Universal North Canal)"
+      },
       "kind": "酒店",
       "fields": {
         "地址": "通州区潞通大街191号",
@@ -704,6 +981,41 @@ window.SITE_DATA = {
         "电话": "+86-10-80519899-0",
         "酒店等级": "舒适型酒店",
         "链接": "https://m.ctrip.com/webapp/hotels/detail?hotelid=80600472&atime=20260528&days=1&rankid=&shareId=ODA2MDA0NzJ8aG90ZWxfaW5sYW5kX2RldGFpbHwxMjh8MjAyNjA1MDJUMTE1NzAw&uid=264E294983EDABE59F699A89DF559F22&intographicshow=1&sharersid=681&sharerpvid=24684&sharercid=12001157810315458272&sharerdate=20260502"
+      },
+      "fieldTranslations": {
+        "地址": {
+          "cn": "通州区潞通大街191号",
+          "en": "No. 191, Lutong Street, Tongzhou District",
+          "es": "No. 191, calle Lutong, distrito de Tongzhou",
+          "fr": "No 191, rue Lutong, district de Tongzhou",
+          "de": "Nr. 191, Lutong Street, Bezirk Tongzhou",
+          "ja": "通州区潞通大街191号",
+          "ru": "No. 191, улица Lutong, район Тунчжоу"
+        },
+        "备注": {
+          "cn": "距中国人民大学（通州校区）直线4.1公里，免费停车，可使用微信、支付宝支付",
+          "en": "About 4.1 km in a straight line from RUC Tongzhou Campus; free parking; accepts WeChat Pay and Alipay.",
+          "es": "A unos 4,1 km en linea recta del campus Tongzhou de RUC; aparcamiento gratuito; acepta WeChat Pay y Alipay.",
+          "fr": "A environ 4,1 km a vol d'oiseau du campus de Tongzhou de RUC; parking gratuit; accepte WeChat Pay et Alipay.",
+          "de": "Etwa 4,1 km Luftlinie vom RUC-Campus Tongzhou entfernt; kostenloses Parken; akzeptiert WeChat Pay und Alipay.",
+          "ja": "中国人民大学（通州キャンパス）から直線距離約4.1km。無料駐車場あり。WeChat Pay、Alipay利用可。",
+          "ru": "Около 4,1 км по прямой от кампуса RUC Tongzhou; бесплатная парковка; принимаются WeChat Pay и Alipay."
+        },
+        "电话": {
+          "cn": "+86-10-80519899-0"
+        },
+        "酒店等级": {
+          "cn": "舒适型酒店",
+          "en": "Comfort hotel",
+          "es": "Hotel de confort",
+          "fr": "Hotel confort",
+          "de": "Komfort-Hotel",
+          "ja": "コンフォートホテル",
+          "ru": "Комфортный отель"
+        },
+        "链接": {
+          "cn": "https://m.ctrip.com/webapp/hotels/detail?hotelid=80600472&atime=20260528&days=1&rankid=&shareId=ODA2MDA0NzJ8aG90ZWxfaW5sYW5kX2RldGFpbHwxMjh8MjAyNjA1MDJUMTE1NzAw&uid=264E294983EDABE59F699A89DF559F22&intographicshow=1&sharersid=681&sharerpvid=24684&sharercid=12001157810315458272&sharerdate=20260502"
+        }
       },
       "images": [
         "通州校区附近餐饮及酒店/酒店/桔子酒店（北京通州环球北运河店）/效果图1.jpg",
@@ -714,6 +1026,15 @@ window.SITE_DATA = {
     {
       "id": "院子酒店",
       "name": "院子酒店",
+      "nameTranslations": {
+        "cn": "院子酒店",
+        "en": "The Yard Hotel",
+        "es": "The Yard Hotel",
+        "fr": "The Yard Hotel",
+        "de": "The Yard Hotel",
+        "ja": "院子ホテル",
+        "ru": "The Yard Hotel"
+      },
       "kind": "酒店",
       "fields": {
         "地址": "通州区潞城镇普欣南里233号",
@@ -722,6 +1043,44 @@ window.SITE_DATA = {
         "邮箱": "yang.jin@tahoehotels.cn",
         "酒店等级": "高档型酒店",
         "链接": "https://m.ctrip.com/webapp/hotels/detail?hotelid=1686116&atime=20260528&days=1&rankid=&shareId=MTY4NjExNnxob3RlbF9pbmxhbmRfZGV0YWlsfDEyOHwyMDI2MDUwMlQxMTQyMDc=&uid=264E294983EDABE59F699A89DF559F22&intographicshow=1&sharersid=681&sharerpvid=24643&sharercid=12001157810315458272&sharerdate=20260502"
+      },
+      "fieldTranslations": {
+        "地址": {
+          "cn": "通州区潞城镇普欣南里233号",
+          "en": "No. 233, Puxin Nanli, Lucheng Town, Tongzhou District",
+          "es": "No. 233, Puxin Nanli, Lucheng, distrito de Tongzhou",
+          "fr": "No 233, Puxin Nanli, bourg de Lucheng, district de Tongzhou",
+          "de": "Nr. 233, Puxin Nanli, Lucheng Town, Bezirk Tongzhou",
+          "ja": "通州区潞城鎮普欣南里233号",
+          "ru": "No. 233, Puxin Nanli, поселок Lucheng, район Тунчжоу"
+        },
+        "备注": {
+          "cn": "距中国人民大学（通州校区）驾车2.3公里，免费停车，可使用银联支付",
+          "en": "About 2.3 km by car from RUC Tongzhou Campus; free parking; accepts UnionPay.",
+          "es": "A unos 2,3 km en coche del campus Tongzhou de RUC; aparcamiento gratuito; acepta UnionPay.",
+          "fr": "A environ 2,3 km en voiture du campus de Tongzhou de RUC; parking gratuit; accepte UnionPay.",
+          "de": "Etwa 2,3 km mit dem Auto vom RUC-Campus Tongzhou entfernt; kostenloses Parken; akzeptiert UnionPay.",
+          "ja": "中国人民大学（通州キャンパス）から車で約2.3km。無料駐車場あり。銀聯利用可。",
+          "ru": "Около 2,3 км на автомобиле от кампуса RUC Tongzhou; бесплатная парковка; принимается UnionPay."
+        },
+        "电话": {
+          "cn": "+86-10-89576888-0"
+        },
+        "邮箱": {
+          "cn": "yang.jin@tahoehotels.cn"
+        },
+        "酒店等级": {
+          "cn": "高档型酒店",
+          "en": "Upscale hotel",
+          "es": "Hotel de gama alta",
+          "fr": "Hotel haut de gamme",
+          "de": "Gehobenes Hotel",
+          "ja": "高級ホテル",
+          "ru": "Отель повышенного класса"
+        },
+        "链接": {
+          "cn": "https://m.ctrip.com/webapp/hotels/detail?hotelid=1686116&atime=20260528&days=1&rankid=&shareId=MTY4NjExNnxob3RlbF9pbmxhbmRfZGV0YWlsfDEyOHwyMDI2MDUwMlQxMTQyMDc=&uid=264E294983EDABE59F699A89DF559F22&intographicshow=1&sharersid=681&sharerpvid=24643&sharercid=12001157810315458272&sharerdate=20260502"
+        }
       },
       "images": [
         "通州校区附近餐饮及酒店/酒店/院子酒店/效果图1.jpg",

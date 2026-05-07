@@ -21,12 +21,12 @@ const state = {
 
 const languages = [
   ["cn", "中文"],
-  ["en", "EN"],
+  ["en", "English"],
   ["ja", "日本語"],
-  ["es", "ES"],
-  ["fr", "FR"],
-  ["de", "DE"],
-  ["ru", "RU"]
+  ["es", "Español"],
+  ["fr", "Français"],
+  ["de", "Deutsch"],
+  ["ru", "Русский"]
 ];
 
 const ui = {
@@ -744,6 +744,10 @@ function displayType(type) {
   return typeTranslations[state.language]?.[type] || type;
 }
 
+function displayPlaceName(place) {
+  return localText(place?.nameTranslations) || place?.name || "";
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -1147,8 +1151,7 @@ function renderBuildingFilter() {
   const types = Array.from(new Set(campusPlaces().map((item) => item.type))).sort();
   elements.buildingFilter.innerHTML = [
     `<option value="all">${t("allTypes")}</option>`,
-    ...types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(displayType(type))}</option>`),
-    `<option value="${escapeHtml(t("guideServices"))}">${escapeHtml(t("guideServices"))}</option>`
+    ...types.map((type) => `<option value="${escapeHtml(type)}">${escapeHtml(displayType(type))}</option>`)
   ].join("");
 }
 
@@ -1157,13 +1160,6 @@ function buildingMatches(building) {
   const description = localText(building.description);
   const haystack = `${building.name} ${displayName(building.name)} ${building.type} ${displayType(building.type)} ${description}`.toLowerCase();
   const typeOk = state.buildingType === "all" || building.type === state.buildingType;
-  return typeOk && (!query || haystack.includes(query));
-}
-
-function assistantIndexMatches() {
-  const query = state.buildingQuery.trim().toLowerCase();
-  const haystack = `${t("assistantIndexTitle")} ${t("assistantIndexText")} ${t("guideServices")}`.toLowerCase();
-  const typeOk = state.buildingType === "all" || state.buildingType === t("guideServices");
   return typeOk && (!query || haystack.includes(query));
 }
 
@@ -1201,20 +1197,6 @@ function renderBuildings() {
   if (futureList.length) {
     blocks.push(`<h3 class="building-group-title">${escapeHtml(t("futurePlaces"))}</h3>`);
     blocks.push(...futureList.map((building) => buildingCard(building, { static: true, tag: t("futureNote") })));
-  }
-
-  if (assistantIndexMatches()) {
-    blocks.push(`<h3 class="building-group-title">${escapeHtml(t("guideServices"))}</h3>`);
-    blocks.push(`
-      <a class="building-card guide-card" href="#assistant">
-        ${imageHtml(data.brand?.logo, t("assistantIndexTitle"))}
-        <span class="card-body">
-          <span class="tag">${escapeHtml(t("guideServices"))}</span>
-          <h3>${escapeHtml(t("assistantIndexTitle"))}</h3>
-          <p>${escapeHtml(t("assistantIndexText"))}</p>
-        </span>
-      </a>
-    `);
   }
 
   elements.buildingGrid.innerHTML = blocks.length
@@ -1313,7 +1295,10 @@ function placeMeta(place) {
     : ["类别", "评分", "人均", "营业时间", "地址", "电话", "备注"];
   const rows = preferred
     .filter((field) => place.fields?.[field])
-    .map((field) => `<span><strong>${escapeHtml(fieldLabel(field))}:</strong> ${escapeHtml(place.fields[field])}</span>`);
+    .map((field) => {
+      const value = localText(place.fieldTranslations?.[field]) || place.fields[field];
+      return `<span><strong>${escapeHtml(fieldLabel(field))}:</strong> ${escapeHtml(value)}</span>`;
+    });
   return rows.join("");
 }
 
@@ -1323,12 +1308,13 @@ function renderPlaces() {
     .map((place) => {
       const image = imageOrFallback(place.images);
       const link = place.fields?.["链接"];
+      const name = displayPlaceName(place);
       return `
         <article class="place-card">
-          ${imageHtml(image, place.name)}
+          ${imageHtml(image, name)}
           <div>
             <span class="tag">${escapeHtml(place.kind === "酒店" ? t("hotelTab") : t("restaurantTab"))}</span>
-            <h3>${escapeHtml(place.name)}</h3>
+            <h3>${escapeHtml(name)}</h3>
           </div>
           <div class="place-meta">${placeMeta(place)}</div>
           ${link ? `<a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">${t("website")}</a>` : ""}
